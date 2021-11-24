@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <van-button type="primary">主要按钮</van-button>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -31,8 +32,12 @@
 </template>
 
 <script>
+import { Button } from 'vant';
 export default {
   name: 'HelloWorld',
+  components: {
+    'van-button': Button
+  },
   props: {
     msg: String
   }
