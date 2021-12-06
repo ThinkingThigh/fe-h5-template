@@ -1,0 +1,30 @@
+<!-- 首页 -->
+<template>
+  <div class="index-container">index</div>
+</template>
+
+<script>
+export default {
+  components: {},
+  data() {
+    return {
+      user_info:
+        localStorage.getItem("userInfo") &&
+        JSON.parse(localStorage.getItem("userInfo")),
+    };
+  },
+  methods: {},
+  mounted() {},
+};
+</script>
+<style lang="scss" scoped>
+.index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100% - 20px - 20px);
+  height: calc(100vh - 20px - 20px);
+  padding: 20px;
+  overflow-y: scroll;
+}
+</style>

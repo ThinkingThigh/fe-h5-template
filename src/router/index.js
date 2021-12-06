@@ -1,27 +1,47 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Login from "../views/login.vue";
+import Index from "../views/index.vue";
+import GoMobile from "../views/GoMobile.vue";
 
-Vue.use(VueRouter)
+import {
+  PATH_LOGIN,
+  PATH_INDEX,
+  PATH_GO_MOBILE,
+} from "../constants/path";
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: PATH_LOGIN,
+    name: "Login",
+    component: Login,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: PATH_INDEX,
+    name: "Index",
+    component: Index,
+  },
+  {
+    path: PATH_GO_MOBILE,
+    name: "GoMobile",
+    component: GoMobile,
+  },
+];
 
 const router = new VueRouter({
-  routes
-})
-
-export default router
+  mode: "history",
+  routes,
+});
+router.beforeEach((to, from, next) => {
+  if (!/(iPhone|iOS|Android)/i.test(navigator.userAgent)) {
+    if (to.path == PATH_GO_MOBILE) {
+      next();
+    } else {
+      next({ path: PATH_GO_MOBILE });
+    }
+  } else {
+    next();
+  }
+});
+export default router;
