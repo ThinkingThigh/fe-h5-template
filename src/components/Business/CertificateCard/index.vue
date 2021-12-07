@@ -34,6 +34,7 @@ export default {
   border-radius: 4px;
   padding: 20px;
   margin-bottom: 15px;
+  flex-shrink: 0;
   &:last-child {
     margin-bottom: 0;
   }
