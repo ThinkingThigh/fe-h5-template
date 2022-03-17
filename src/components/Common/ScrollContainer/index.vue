@@ -13,16 +13,24 @@ export default {
   components: {},
   props: {},
   data() {
-    return {};
+    return {
+      pageScroll: null,
+    };
   },
   watch: {},
   computed: {},
-  methods: {},
+  methods: {
+    refreshScroll() {
+      this.pageScroll.refresh();
+    },
+  },
   created() {},
   mounted() {
-    new BScroll(".scroll-container", {
-      bindToWrapper: true,
-      click: true,
+    this.$nextTick(() => {
+      this.pageScroll = new BScroll(".scroll-container", {
+        bindToWrapper: true,
+        click: true,
+      });
     });
   },
 };
