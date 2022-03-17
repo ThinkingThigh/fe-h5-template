@@ -1,11 +1,16 @@
 <!-- 首页 -->
 <template>
-  <div class="index-container">index</div>
+  <div class="index-container">
+    <ScrollContainer>index</ScrollContainer>
+  </div>
 </template>
 
 <script>
+import ScrollContainer from "@components/Common/ScrollContainer";
 export default {
-  components: {},
+  components: {
+    ScrollContainer,
+  },
   data() {
     return {
       user_info:
